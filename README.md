@@ -24,25 +24,38 @@ Fivetran MCP (community/демо) — мост к Fivetran API: управлен
 
 ## Плюсы и минусы
 ### Сервис	Плюсы	Минусы
-### Arize	Глубокая observability, tracing MCP, самоулучшение агентов 
-### Learning curve для новичков, сложность метрик 
-### Elastic	Реал-тайм поиск/анализ ES, hosted cloud endpoint, стандартизация 
+### Arize
+### ( + https://rapid-agent.devpost.com/details/arize-resources )
+### Глубокая observability, tracing MCP, самоулучшение агентов
+### ( + https://iris-eval.com/compare/arize )
+### ( - https://websites2know.com/arize-ai-review-features-pricing-with-pros-and-cons/ ) Learning curve для новичков, сложность метрик 
+### Elastic
+### ( + https://www.elastic.co/what-is/mcp )
+### Реал-тайм поиск/анализ ES, hosted cloud endpoint, стандартизация 
+### ( - https://discuss.elastic.co/t/choosing-between-elastic-mcp-server-elasticsearch-and-elasticsearch-api-for-natural-language-querying-in-asp-net-core/381003)
 ### Высокий token usage (mappings/search), менее эффективно vs direct API 
-### Fivetran	Автоматизация data pipelines/syncs, stateful/multi-user 
+### Fivetran
+### ( + https://www.fivetran.com/blog/integrate-data-faster-using-natural-language-fivetran-and-mcp )
+### Автоматизация data pipelines/syncs, stateful/multi-user 
+### ( - https://delulu9.com/mcp/fivetran-mcp/ )
 ### Нет official сервера (community), setup wrapper 
 ## Онбординг для новичков
 ### Установите SDK: pip install mcp fastmcp openinference-instrumentation-mcp arize-otel
-
+### ( https://rapid-agent.devpost.com/details/arize-resources )
 ### Создайте простой MCP сервер (пример для всех):
 
-text
+## text
 ### from mcp.server.fastmcp import FastMCP
 ### mcp = FastMCP("my-server")
 ### @mcp.tool()
 ### def hello() -> str: return "Hello Gemini!"
 ### if __name__ == "__main__": mcp.run()
-### Подключите к Gemini/Claude: В config добавьте {"mcpServers": {"arize": {"command": "python", "args": ["server.py"]}}}
 
-Cloud deploy: Используйте Amvera Cloud/Docker для HTTPS endpoint; для Elastic — enable Agent Builder
+### Подключите к Gemini/Claude: В config добавьте {"mcpServers": {"arize": {"command": "python", "args": ["server.py"]}}}
+### ( https://www.elastic.co/what-is/mcp )
+### Cloud deploy: Используйте Amvera Cloud/Docker для HTTPS endpoint; для Elastic — enable Agent Builder
+### ( https://habr.com/ru/companies/amvera/articles/931874/ )
+### Тестируйте: Запустите агента с Gemini, вызовите tools; мониторьте traces в Arize
+### ( https://github.com/elastic/mcp-server-elasticsearch )
 
 Тестируйте: Запустите агента с Gemini, вызовите tools; мониторьте traces в Arize
