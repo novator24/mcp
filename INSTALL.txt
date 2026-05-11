@@ -127,14 +127,49 @@ curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | s
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
 
 sudo apt update
+
 ## 5. Установите Cursor в WSL
 ## 5.1 Скачайте и установите Cursor
-bash
-# Установка agent через официальный скрипт (не рекомендуется)
-curl https://cursor.com/install -fsS | sh
 
-# Или установка .deb (рекомендуется)
-https://dev.to/forhad_hosain_d27ef1edf40/how-to-install-the-cursor-the-ai-code-editor-on-ubuntu-2404-a-simple-guide-3dn1
+В терминале Ubuntu выполните:
+
+bash
+# Перейдите во временную директорию
+cd /tmp
+
+# Скачайте последнюю версию Cursor (.deb пакет)
+wget https://downloads.cursor.sh/linux/deb/x64/cursor_latest_amd64.deb
+
+# Установите пакет
+sudo apt install -y ./cursor_latest_amd64.deb
+
+# Если возникли проблемы с зависимостями
+sudo apt --fix-broken install -y
+
+## 5.2 Проверьте запуск
+
+bash
+cursor
+
+Или откройте текущую папку:
+
+bash
+cursor .
+
+Если всё настроено правильно, Cursor запустится с GUI через WSLg (в Windows 11 это работает из коробки).
+## 5.3 (Опционально) Добавьте alias
+
+Чтобы не писать каждый раз cursor:
+
+bash
+echo 'alias c="cursor"' >> ~/.bashrc
+source ~/.bashrc
+
+Теперь можно запускать так:
+
+bash
+c .
+
 
 ## 6. Дополнительная оптимизация
 bash
