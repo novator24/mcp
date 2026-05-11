@@ -155,7 +155,7 @@ bash
 cursor --version
 Windows 10 — установите VcXsrv:
 
-Скачайте VcXsrv с официального сайта.
+Скачайте VcXsrv с официального сайта. https://sourceforge.net/projects/vcxsrv/
 
 Запустите XLaunch → Multiple windows → Display 0 → Start no client.
 
