@@ -138,10 +138,11 @@ bash
 cd /tmp
 
 # Скачайте последнюю версию Cursor (.deb пакет)
-wget https://downloads.cursor.sh/linux/deb/x64/cursor_latest_amd64.deb
+wget https://api2.cursor.sh/updates/download/golden/linux-x64-deb/cursor/3.3 -O cursor_latest_amd64.deb
 
 # Установите пакет
-sudo apt install -y ./cursor_latest_amd64.deb
+sudo dpkg -i cursor_3.3.30_amd64.deb
+sudo apt-get install -f  # Fix any dependency issues
 
 # Если возникли проблемы с зависимостями
 sudo apt --fix-broken install -y
